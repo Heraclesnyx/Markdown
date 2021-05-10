@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   renderText = text => {
-    const textModif = DOMPurify.sanitize(text, {USE_PROFILES: {html: true}});
+    const textModif = DOMPurify.sanitize(text);
     return marked(textModif);
   }
 
