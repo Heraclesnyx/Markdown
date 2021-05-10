@@ -14,6 +14,24 @@ class App extends Component {
     text: sampleText
   }
 
+  /*Cycle de vie*/
+  componentDidMount() {
+    const text = localStorage.getItem('text')
+
+    if(text){
+      this.setState({ text }) /*Ici on garde les modification dans le localStorage */
+    }else{
+      this.setState({ text: sampleText }) /*Si il n'y a pas de texte recharge moi mon fichier sampleText par defaut*/
+    }
+    
+  }
+
+  componentDidUpdate(){
+    const { text } = this.state
+    localStorage.setItem('text', text)
+  }
+
+
   handleChange = event => {
     const text = event.target.value
     this.setState({ text })
